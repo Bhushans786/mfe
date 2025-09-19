@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: container
 
 # Controls when the workflow will run
 on:
@@ -34,6 +34,8 @@ jobs:
       # Runs a single command using the runners shell
       - run: npm i
       - run: npm run build
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
